@@ -4,6 +4,9 @@ namespace controllers;
 
 use models\Sport;
 
+require_once '../models/Sport.php';
+require_once __DIR__ . '/../functions/UrlHelper.php';
+
 class SportController
 {
     private $sportModel;
@@ -16,13 +19,23 @@ class SportController
        public function index()
     {
         $sports = $this->sportModel->getAll();
-        include __DIR__ . '/../views/sport/index.php';
+        include __DIR__ . '/../views/sports/index.php';
     }
 
+    public function show($id)
+    {
+        $sport = $this->sportModel->getById($id);
+
+        if ($sport) {
+            include '../views/sports/Show.php';
+        } else {
+            echo "Error: Sport not found.";
+        }
+    }
 
     public function create()
     {
-        include __DIR__ . '/../views/sport/create.php';
+        include __DIR__ . '/../views/sports/create.php';
     }
 
 
@@ -30,14 +43,14 @@ class SportController
     {
         $this->sportModel->name = $_POST['name'];
         $this->sportModel->create();
-        header('Location: /sports');
+        header("Location: " . base_url() . "/sports");
     }
 
 
     public function edit($id)
     {
         $sport = $this->sportModel->getById($id);
-        include __DIR__ . '/../views/sport/edit.php';
+        include __DIR__ . '/../views/sports/edit.php';
     }
 
 
@@ -46,7 +59,7 @@ class SportController
         $this->sportModel->id = $id;
         $this->sportModel->name = $_POST['name'];
         $this->sportModel->update();
-        header('Location: /sports');
+        header("Location: " . base_url() . "/sports");
     }
 
 
@@ -54,7 +67,7 @@ class SportController
     {
         $this->sportModel->id = $id;
         $this->sportModel->delete();
-        header('Location: /sports');
+        header("Location: " . base_url() . "/sports");
     }
 }
 ?>
