@@ -5,8 +5,10 @@ use controllers\PersonController;
 use controllers\SportController;
 
 require '../controllers/JudgeController.php';
+require '../controllers/SportController.php';
 
 $judgeController = new JudgeController();
+$sportController = new SportController();
 
 $baseUri = dirname($_SERVER['SCRIPT_NAME']);
 $requestUri = str_replace($baseUri, '', $_SERVER['REQUEST_URI']);
@@ -29,6 +31,24 @@ if ($requestUri === '' || $requestUri === '/') {
     $judgeController->update($matches[1]);
 } elseif (preg_match('/^\/judges\/(\d+)\/delete$/', $requestUri, $matches) && $requestMethod === 'POST') {
     $judgeController->delete($matches[1]);
+
+
+} elseif ($requestUri === '/sports' && $requestMethod === 'GET') {
+    $sportController->index();
+} elseif ($requestUri === '/sports/create' && $requestMethod === 'GET') {
+    $sportController->create();
+} elseif ($requestUri === '/sports' && $requestMethod === 'POST') {
+    $sportController->store();
+} elseif (preg_match('/^\/sports\/(\d+)$/', $requestUri, $matches) && $requestMethod === 'GET') {
+    $sportController->show($matches[1]);
+} elseif (preg_match('/^\/sports\/(\d+)\/edit$/', $requestUri, $matches) && $requestMethod === 'GET') {
+    $sportController->edit($matches[1]);
+} elseif (preg_match('/^\/sports\/(\d+)\/update$/', $requestUri, $matches) && $requestMethod === 'POST') {
+    $sportController->update($matches[1]);
+} elseif (preg_match('/^\/sports\/(\d+)\/delete$/', $requestUri, $matches) && $requestMethod === 'POST') {
+    $sportController->delete($matches[1]);
+
+
 } else {
     echo "Page not found";
 }
