@@ -3,17 +3,22 @@
 namespace controllers;
 
 use models\Person;
+use models\Country;
 
 require_once '../models/Person.php';
+require_once '../models/country.php';
+
 require_once __DIR__ . '/../functions/UrlHelper.php';
 
 class PersonController
 {
     private $personModel;
+    private $countryModel;
 
     public function __construct()
     {
         $this->personModel = new Person();
+        $this->countryModel = new Country();
     }
 
     public function index()
@@ -35,6 +40,7 @@ class PersonController
 
     public function create()
     {
+        $countries = $this->countryModel->getAll();
         include __DIR__ . '/../views/people/create.php';
     }
 
@@ -44,7 +50,7 @@ class PersonController
         $this->personModel->lastName = $_POST['lastName'];
         $this->personModel->gender = $_POST['gender'];
         $this->personModel->birthdate = $_POST['birthdate'];
-        $this->personModel->countryId = $_POST['countryId'];
+        $this->personModel->countryId = $_POST['id_country'];
 
         $this->personModel->create();
         header("Location: " . base_url() . "/people");
@@ -52,6 +58,7 @@ class PersonController
 
     public function edit($id)
     {
+        $countries = $this->countryModel->getAll();
         $person = $this->personModel->getById($id);
         include __DIR__ . '/../views/people/edit.php';
     }
@@ -63,7 +70,7 @@ class PersonController
         $this->personModel->lastName = $_POST['lastName'];
         $this->personModel->gender = $_POST['gender'];
         $this->personModel->birthdate = $_POST['birthdate'];
-        $this->personModel->countryId = $_POST['countryId'];
+        $this->personModel->countryId = $_POST['id_country'];
 
         $this->personModel->update();
         header("Location: " . base_url() . "/people");
