@@ -26,7 +26,7 @@ class Judge
     public function getAll() {
         $query = "
         SELECT  
-            p.id_persona AS id,
+            j.id_juez AS id,
             p.nombre AS firstName,
             p.apellido AS lastName,
             d.nombre AS sport,
@@ -42,7 +42,7 @@ class Judge
         $stmt->execute();
 
         $results = $stmt->fetchAll(\PDO::FETCH_OBJ);
-       // print_r($results);
+     //  print_r($results);
         return $results;
     }
 
@@ -51,12 +51,17 @@ class Judge
     {
         $query = "
         SELECT
-            p.id_persona AS id,
+            j.id_juez AS id,
+            p.id_persona AS id_persona,
             CONCAT(p.nombre, ' ', p.apellido) AS fullName,
             EXTRACT(YEAR FROM AGE(CURRENT_DATE, p.fecha_nacimiento)) AS edad,
             d.nombre AS sport,
             j.certificacion AS certification,
-            j.experiencia_anios AS experienceYears
+            j.experiencia_anios AS experienceYears,
+            p2.nombre AS country,
+            p2.continente AS continent,
+            j.id_deporte AS sport_id,
+            j.id_pais AS country_id
         FROM " . $this->table . " AS j
         INNER JOIN deporte AS d ON d.id_deporte = j.id_deporte
         INNER JOIN persona AS p ON p.id_persona = j.id_persona
