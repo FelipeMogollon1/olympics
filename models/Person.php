@@ -26,7 +26,7 @@ class Person
     {
         $query = "
         SELECT
-            p.id_persona,
+            p.id_persona as id_persona,
             p.nombre AS firstName,
             p.apellido AS lastName,
             p.genero AS gender,
@@ -48,7 +48,7 @@ class Person
     {
         $query = "
         SELECT
-            p.id_persona,
+            p.id_persona as id_persona,
             p.nombre AS firstName,
             p.apellido AS lastName,
             CONCAT(p.nombre, ' ', p.apellido) AS fullName,
