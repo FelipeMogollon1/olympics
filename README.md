@@ -4,7 +4,7 @@
 # Gestión de Jueces Olímpicos
 ### UTP - Universidad Tecnológica de Pereira
 
-**Autor:** Ivan Alexander Laverde
+**Docente:** Ivan Alexander Laverde
 
 ## Proyecto
 
