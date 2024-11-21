@@ -1,12 +1,12 @@
 <?php
 
 class Database {
-    private $host = '3.85.233.186';
+    private $host = 'localhost';
     private $db_name = 'olimpicos';
-    private $username = 'admin1';
-    private $password = 'L{@n<:c%Da,_';
+    private $username = 'root';
+    private $password = '';
     private $port = '5432';
-    private $schema = 'equipo1';
+    private $schema = '';
     public $conn;
 
     public function getConnection() {
