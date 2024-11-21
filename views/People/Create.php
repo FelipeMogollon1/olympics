@@ -47,13 +47,14 @@
 
 
                 <div class="mb-3">
-                    <label for="countryId" class="form-label">País:</label>
-                    <select id="countryId" name="countryId" class="form-select" required>
+                    <label for="id_country" class="form-label">País:</label>
+                    <select id="id_country" name="id_country" class="form-select" required>
                         <option value="" disabled selected>Selecciona un país</option>
-
-
-                        <option value="1">México</option>
-                        <option value="2">Estados Unidos</option>
+                        <?php foreach ($countries as $country): ?>
+                            <option value="<?php echo htmlspecialchars($country->id); ?>">
+                                <?php echo htmlspecialchars($country->name); ?>
+                            </option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
 

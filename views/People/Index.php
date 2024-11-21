@@ -50,7 +50,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                                         </div>
                                         <div class="modal-body">
-                                            ¿Está seguro de que desea eliminar a <?php echo htmlspecialchars($person->nombre . ' ' . $person->apellido); ?>?
+                                            ¿Está seguro de que desea eliminar a <?php echo htmlspecialchars($person->firstname . ' ' . $person->lastname); ?>?
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

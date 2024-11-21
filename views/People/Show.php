@@ -50,7 +50,7 @@
                         <div class="d-flex justify-content-between mt-4">
                             <a href="<?php echo base_url(); ?>/people/<?php echo $person->id_persona; ?>/edit" class="btn btn-warning">Editar</a>
 
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-<?php echo $person->id; ?>">
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-<?php echo $person->id_persona; ?>">
                                 Eliminar
                             </button>
 

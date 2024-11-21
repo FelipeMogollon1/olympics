@@ -30,9 +30,9 @@
                     <div class="mb-3">
                         <label for="gender" class="form-label">Género:</label>
                         <select id="gender" name="gender" class="form-select" required>
-                            <option value="M" <?php echo $person->gender == 'M' ? 'selected' : ''; ?>>Masculino</option>
-                            <option value="F" <?php echo $person->gender == 'F' ? 'selected' : ''; ?>>Femenino</option>
-                            <option value="O" <?php echo $person->gender == 'O' ? 'selected' : ''; ?>>Otro</option>
+                            <option value="Masculino" <?php echo $person->gender == 'Masculino' ? 'selected' : ''; ?>>Masculino</option>
+                            <option value="Femenino" <?php echo $person->gender == 'Femenino' ? 'selected' : ''; ?>>Femenino</option>
+                            <option value="Otro" <?php echo $person->gender == 'Otro' ? 'selected' : ''; ?>>Otro</option>
                         </select>
                     </div>
 
@@ -42,16 +42,17 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="countryId" class="form-label">País:</label>
-                        <select id="countryId" name="countryId" class="form-select" required>
+                        <label for="id_country" class="form-label">País:</label>
+                        <select name="id_country" id="id_country" class="form-select" required>
                             <?php foreach ($countries as $country): ?>
-                                <option value="<?= $country->id; ?>"
-                                    <?= $country->id == $person->countryId ? 'selected' : ''; ?>>
-                                    <?= $country->name; ?>
+                                <option value="<?= htmlspecialchars($country->id); ?>"
+                                    <?= $country->id == $person->countryid ? 'selected' : ''; ?>>
+                                    <?= htmlspecialchars($country->name); ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
+
 
                     <button type="submit" class="btn btn-primary w-100">Actualizar Persona</button>
                 </form>
