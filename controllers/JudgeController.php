@@ -3,8 +3,14 @@
 namespace Controllers;
 
 use models\Judge;
+use models\Sport;
+use models\Country;
+use models\Person;
 
 require_once '../models/Judge.php';
+require_once '../models/Country.php';
+require_once '../models/Person.php';
+require_once '../models/sport.php';
 require_once __DIR__ . '/../functions/UrlHelper.php';
 
 class JudgeController
@@ -32,6 +38,15 @@ class JudgeController
 
     public function create()
     {
+        $sportModel = new Sport();
+        $sports = $sportModel->getAll();
+
+        $countryModel = new Country();
+        $countries = $countryModel->getAll();
+
+        $personModel = new Person();
+        $persons = $personModel->getAll();
+
         include '../views/judges/create.php';
     }
 
@@ -64,6 +79,15 @@ class JudgeController
 
     public function edit($id)
     {
+        $sportModel = new Sport();
+        $sports = $sportModel->getAll();
+
+        $countryModel = new Country();
+        $countries = $countryModel->getAll();
+
+        $personModel = new Person();
+        $persons = $personModel->getAll();
+
         $judgeModel = new Judge();
         $judge = $judgeModel->getById($id);
 
