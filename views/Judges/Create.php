@@ -16,39 +16,50 @@
         <div class="col-md-6 col-lg-5">
             <h1 class="mb-4 text-center">Crear Juez</h1>
             <form action="<?php echo base_url(); ?>/judges" method="POST" class="card p-4 shadow">
-                <div class="mb-3">
-                    <label for="certification" class="form-label">Certificación:</label>
-                    <input type="text" id="certification" name="certification" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label for="experienceYears" class="form-label">Años de Experiencia:</label>
-                    <input type="number" id="experienceYears" name="experienceYears" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label for="id_sport" class="form-label">Deporte:</label>
-                    <select id="id_sport" name="id_sport" class="form-select" required>
-                        <option value="" disabled selected>Selecciona un deporte</option>
 
-                        <option value="1">Fútbol</option>
-                        <option value="2">Baloncesto</option>
-                    </select>
-                </div>
                 <div class="mb-3">
                     <label for="id_person" class="form-label">Persona:</label>
                     <select id="id_person" name="id_person" class="form-select" required>
                         <option value="" disabled selected>Selecciona una persona</option>
-
-                        <option value="1">Juan Pérez</option>
-                        <option value="2">María López</option>
+                        <?php foreach ($persons as $person): ?>
+                            <option value="<?php echo htmlspecialchars($person->id_persona); ?>">
+                                <?php echo htmlspecialchars($person->firstname . ' ' . $person->lastname); ?>
+                            </option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
+
+                <div class="mb-3">
+                    <label for="id_sport" class="form-label">Deporte:</label>
+                    <select id="id_sport" name="id_sport" class="form-select" required>
+                        <option value="" disabled selected>Selecciona un deporte</option>
+                        <?php foreach ($sports as $sport): ?>
+                            <option value="<?php echo htmlspecialchars($sport->id); ?>">
+                                <?php echo htmlspecialchars($sport->name); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="certification" class="form-label">Certificación:</label>
+                    <input type="text" id="certification" name="certification" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="experienceYears" class="form-label">Años de Experiencia:</label>
+                    <input type="number" id="experienceYears" name="experienceYears" class="form-control" min="0" max="99" required>
+                </div>
+
                 <div class="mb-3">
                     <label for="id_country" class="form-label">País:</label>
                     <select id="id_country" name="id_country" class="form-select" required>
                         <option value="" disabled selected>Selecciona un país</option>
-
-                        <option value="1">México</option>
-                        <option value="2">Estados Unidos</option>
+                        <?php foreach ($countries as $country): ?>
+                            <option value="<?php echo htmlspecialchars($country->id); ?>">
+                                <?php echo htmlspecialchars($country->name); ?>
+                            </option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Guardar Juez</button>

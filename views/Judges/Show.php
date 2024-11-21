@@ -10,10 +10,8 @@
 </head>
 <body>
 <div class="d-flex">
-    <!-- Sidebar -->
     <?php include __DIR__ . '/../partials/sidebar.php'; ?>
 
-    <!-- Main Content -->
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
         <div class="col-md-8 col-lg-6">
             <div class="card shadow-sm p-4">
@@ -44,6 +42,10 @@
                                 <th>Años de Experiencia</th>
                                 <td><?php echo $judge->experienceyears; ?> años</td>
                             </tr>
+                            <tr>
+                                <th>País</th>
+                                <td><?php echo $judge->country; ?> , <?php echo $judge->continent; ?></td>
+                            </tr>
                             </tbody>
                         </table>
 
@@ -63,7 +65,6 @@
     </div>
 </div>
 
-<!-- Modal de Confirmación -->
 <div class="modal fade" id="deleteModal-<?php echo $judge->id; ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

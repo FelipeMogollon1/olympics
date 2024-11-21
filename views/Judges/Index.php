@@ -41,7 +41,6 @@
                             <a href="<?php echo base_url(); ?>/judges/<?php echo $judge->id; ?>/edit" class="btn btn-warning btn-sm">Editar</a>
                             <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal-<?php echo $judge->id; ?>">Eliminar</button>
 
-                            <!-- Modal de Confirmación -->
                             <div class="modal fade" id="deleteModal-<?php echo $judge->id; ?>" tabindex="-1" aria-labelledby="deleteModalLabel-<?php echo $judge->id; ?>" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -50,7 +49,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                                         </div>
                                         <div class="modal-body">
-                                            ¿Está seguro de que desea eliminar al juez <?php echo htmlspecialchars($judge->firstName . ' ' . $judge->lastName); ?>?
+                                            ¿Está seguro de que desea eliminar al juez <?php echo htmlspecialchars($judge->firstname . ' ' . $judge->lastname); ?>?
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
